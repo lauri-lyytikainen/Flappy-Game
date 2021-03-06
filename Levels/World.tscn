@@ -11,6 +11,7 @@ extents = Vector2( 168, 56 )
 script = ExtResource( 2 )
 
 [node name="pipe_timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
