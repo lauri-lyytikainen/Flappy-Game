@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Textures/Mobile - Flappy Bird - Version 12 Sprites.png" type="Texture" id=1]
 [ext_resource path="res://Levels/World.gd" type="Script" id=2]
-[ext_resource path="res://Objects/Pipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="pipe_timer" type="Timer" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -17,8 +18,5 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 143, 255 )
 
-[node name="Pipe" parent="." instance=ExtResource( 3 )]
-position = Vector2( 205.089, 179.325 )
-
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 97.9959, 175.546 )
+position = Vector2( 98.9672, 171.421 )

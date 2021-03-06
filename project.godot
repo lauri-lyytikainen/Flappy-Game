@@ -52,6 +52,13 @@ texture={
 "svg/scale": 1.0
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Pipes"
+2d_physics/layer_3="Ground"
+2d_physics/layer_4="Coins"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
