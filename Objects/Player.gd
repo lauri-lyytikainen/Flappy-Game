@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 			get_parent().stop_game()
 			collision_mask = 0b00000000000000001100
 			alive = false
+			get_parent().player_alive = false
 	
 	#Sprite rotation
 	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 30) + 30

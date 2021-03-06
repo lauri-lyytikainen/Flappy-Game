@@ -4,7 +4,9 @@ onready var pipe_timer = get_node("pipe_timer")
 var pipe = preload("res://Objects/Pipe.tscn")
 var pipes = []
 var difficulty = 1
-
+onready var background = get_node("ParallaxBackground")
+onready var floor_texture = get_node("Floor/ParallaxBackground")
+var player_alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,9 +14,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if player_alive:
+		background.scroll_offset.x -= 1
+		floor_texture.scroll_offset.x -= 2
 	for p in pipes:
 		if p != null:
-			if p.position.x < 0:
+			if p.position.x < -64:
 				p.queue_free()
 
 func start_game() -> void:
@@ -24,7 +29,7 @@ func start_game() -> void:
 func create_pipe(var game_difficulty) -> void:
 	var p = pipe.instance()
 	pipes.append(p)
-	p.position = Vector2(250,250)
+	p.position = Vector2(300,250)
 	p.difficulty = game_difficulty
 	add_child(p)
 

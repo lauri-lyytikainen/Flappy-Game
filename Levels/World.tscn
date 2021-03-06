@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Textures/Mobile - Flappy Bird - Version 12 Sprites.png" type="Texture" id=1]
 [ext_resource path="res://Levels/World.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 2
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 144, 256 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 168, 56 )
@@ -15,12 +20,13 @@ wait_time = 1.5
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 134.812, 243.165 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 288, 0 )
+
+[node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 135, 241.735 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 143, 255 )
+texture = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 135, 240 )
@@ -33,7 +39,14 @@ collision_layer = 4
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="Floor/CollisionShape2D"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Floor"]
+layer = 5
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Floor/ParallaxBackground"]
+motion_mirroring = Vector2( 336, 0 )
+
+[node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="Floor/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 135, 450 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
