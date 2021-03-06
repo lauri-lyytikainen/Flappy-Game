@@ -19,4 +19,5 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 143, 255 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 98.9672, 171.421 )
+position = Vector2( 145, 240 )
+[connection signal="timeout" from="pipe_timer" to="." method="_on_pipe_timer_timeout"]
