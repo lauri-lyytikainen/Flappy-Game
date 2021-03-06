@@ -7,12 +7,13 @@
 extents = Vector2( 26, 160 )
 
 [node name="Pipe" type="KinematicBody2D"]
+z_index = -5
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Lower Pipe" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 220 )
+position = Vector2( 0, 190 )
 shape = SubResource( 1 )
 
 [node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="Lower Pipe"]
@@ -22,7 +23,7 @@ region_enabled = true
 region_rect = Rect2( 84, 323, 26, 160 )
 
 [node name="Upper Pipe" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -220 )
+position = Vector2( 0, -190 )
 shape = SubResource( 1 )
 
 [node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="Upper Pipe"]
