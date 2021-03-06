@@ -5,6 +5,7 @@ var jump_strength = 6
 var velocity = Vector2.ZERO
 var max_speed = 3
 var alive = true
+onready var animation_player = get_node("AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,12 +30,16 @@ func _process(delta: float) -> void:
 	var collision = move_and_collide(velocity)
 	if collision and alive:
 		if "Pipe" in collision.collider.name or "Floor" in collision.collider.name:
+			die()
+	
+	#Sprite rotation
+	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 30) + 30
+	rotation_degrees = rotation
+
+func die() -> void:
 			velocity.x = 3
 			get_parent().stop_game()
 			collision_mask = 0b00000000000000001100
 			alive = false
 			get_parent().player_alive = false
-	
-	#Sprite rotation
-	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 30) + 30
-	rotation_degrees = rotation
+			animation_player.play("dead")
