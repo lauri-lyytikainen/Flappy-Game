@@ -18,6 +18,8 @@ _global_script_class_icons={
 config/name="Flappy Game"
 run/main_scene="res://Levels/World.tscn"
 config/icon="res://icon.png"
+config/macos_native_icon="res://icon.png"
+config/windows_native_icon="res://icon.png"
 
 [display]
 
