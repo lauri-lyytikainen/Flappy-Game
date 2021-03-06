@@ -17,11 +17,7 @@ func _process(delta: float) -> void:
 	if player_alive:
 		background.scroll_offset.x -= 1
 		floor_texture.scroll_offset.x -= 2
-	for p in pipes:
-		if p != null:
-			if p.position.x < -64:
-				p.queue_free()
-
+		
 func start_game() -> void:
 	create_pipe(difficulty)
 	pipe_timer.start()
