@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 3
+var difficulty = 1
 var active = true
 
 
@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if active:
-		move_and_collide(Vector2(-speed,0))
+		move_and_collide(Vector2(-difficulty-1,0))

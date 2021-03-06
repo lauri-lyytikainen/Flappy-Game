@@ -3,7 +3,7 @@ extends Node2D
 onready var pipe_timer = get_node("pipe_timer")
 var pipe = preload("res://Objects/Pipe.tscn")
 var pipes = []
-var speed = 2
+var difficulty = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,14 +18,14 @@ func _process(delta: float) -> void:
 				p.queue_free()
 
 func start_game() -> void:
-	create_pipe(speed)
+	create_pipe(difficulty)
 	pipe_timer.start()
 
-func create_pipe(var pipe_speed) -> void:
+func create_pipe(var game_difficulty) -> void:
 	var p = pipe.instance()
 	pipes.append(p)
 	p.position = Vector2(250,250)
-	p.speed = pipe_speed
+	p.difficulty = game_difficulty
 	add_child(p)
 
 func stop_game() -> void:
@@ -35,5 +35,5 @@ func stop_game() -> void:
 			p.active = false
 
 func _on_pipe_timer_timeout() -> void:
-	create_pipe(speed)
+	create_pipe(difficulty)
 	pipe_timer.start()
