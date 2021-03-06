@@ -1,2 +1,3 @@
 # Flappy-Game
- Flappy Bird styled game
+
+Flappy Bird copy made to learn to use GitHub
