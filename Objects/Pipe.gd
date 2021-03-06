@@ -14,7 +14,11 @@ func _ready() -> void:
 	lower_pipe.position.y = 195+int(g)
 
 func _process(delta: float) -> void:
-	
+	if difficulty == 0:
+		difficulty = 1
+		upper_pipe.position.y = -195
+		lower_pipe.position.y = 195
+		position.y = 200
 	if active:
 		move_and_collide(Vector2(-difficulty-1,0))
 		if position.x < -64:

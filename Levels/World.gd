@@ -7,11 +7,11 @@ var difficulty = 1
 onready var background = get_node("ParallaxBackground")
 onready var floor_texture = get_node("Floor/ParallaxBackground")
 var player_alive = true
+var game_started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	start_game()
 
 
 func _process(delta: float) -> void:
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		floor_texture.scroll_offset.x -= 2
 		
 func start_game() -> void:
-	create_pipe(difficulty)
+	create_pipe(0)
 	pipe_timer.start()
 
 func create_pipe(var game_difficulty) -> void:
