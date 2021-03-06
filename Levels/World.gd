@@ -28,6 +28,11 @@ func create_pipe(var pipe_speed) -> void:
 	p.speed = pipe_speed
 	add_child(p)
 
+func stop_game() -> void:
+	pipe_timer.stop()
+	for p in pipes:
+		if p != null:
+			p.active = false
 
 func _on_pipe_timer_timeout() -> void:
 	create_pipe(speed)
