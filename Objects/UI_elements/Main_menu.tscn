@@ -21,6 +21,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "hide_main_menu"
+length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Node2D:position")
 tracks/0/interp = 1
@@ -28,7 +30,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.3, 0.9 ),
+"times": PoolRealArray( 0.05, 0.45 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 500 ) ]
@@ -111,4 +113,8 @@ texture_pressed = SubResource( 6 )
 texture_hover = SubResource( 4 )
 expand = true
 stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="pressed" from="Node2D/Control/HBoxContainer/Play_button" to="." method="_on_Play_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

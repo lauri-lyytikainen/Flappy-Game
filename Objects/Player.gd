@@ -6,17 +6,23 @@ var velocity = Vector2.ZERO
 var max_speed = 3
 var alive = true
 onready var animation_player = get_node("AnimationPlayer")
-
-var menu_position = Vector2(220, 70)
+onready var menu_animation_player = get_node("AnimationPlayer2")
+var menu_text = preload("res://Objects/UI_elements/Game_name_text.tscn")
+var menu_position = Vector2(240, 70)
 var starting_position = Vector2(135, 240)
+var menu_text_position = Vector2(-226, -24)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_mask = 0b00000000000000001110
 	position = menu_position
+	var t = menu_text.instance()
+	t.position = menu_text_position
+	add_child(t)
 
 func move_to_starting_position() -> void:
-	position = starting_position
+	menu_animation_player.play("move_from_menu_to_ready")
+	get_node("Game_title").fade()
 
 func _process(delta: float) -> void:
 	if get_parent().game_started:
