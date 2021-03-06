@@ -10,6 +10,7 @@ var player_alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	randomize()
 	start_game()
 
 
@@ -25,7 +26,7 @@ func start_game() -> void:
 func create_pipe(var game_difficulty) -> void:
 	var p = pipe.instance()
 	pipes.append(p)
-	p.position = Vector2(300,250)
+	p.position = Vector2(300,200)
 	p.difficulty = game_difficulty
 	add_child(p)
 
