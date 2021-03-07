@@ -12,6 +12,7 @@ var menu_position = Vector2(240, 120)
 var starting_position = Vector2(135, 240)
 var menu_text_position = Vector2(-226, -24)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_mask = 0b00000000000000001110
