@@ -6,5 +6,5 @@ Flappy Bird copy made to learn to use GitHub
 ![Image](/image.png)
 <br>
 ## Recources and sources
-* Font [FlappyBirdy](https://www.dafont.com/flappybirdy.font)
+* [Font](https://www.fontspace.com/flappy-bird-font-f21349)
 * [Sprites used](https://www.spriters-resource.com/mobile/flappybird/sheet/59894/)
