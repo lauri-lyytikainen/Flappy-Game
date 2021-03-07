@@ -4,6 +4,7 @@ var difficulty = 1
 var active = true
 onready var upper_pipe = get_node("Upper Pipe")
 onready var lower_pipe = get_node("Lower Pipe")
+var passed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,10 +17,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if difficulty == 0:
 		difficulty = 1
-		upper_pipe.position.y = -195
-		lower_pipe.position.y = 195
+		upper_pipe.position.y = -200
+		lower_pipe.position.y = 200
 		position.y = 200
 	if active:
+		if position.x <= 135 and !passed:
+			passed = true
+			get_parent().add_score()
 		move_and_collide(Vector2(-difficulty-1,0))
 		if position.x < -64:
 			queue_free()

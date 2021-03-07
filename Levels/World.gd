@@ -8,6 +8,8 @@ onready var background = get_node("ParallaxBackground")
 onready var floor_texture = get_node("Floor/ParallaxBackground")
 var player_alive = true
 var game_started = false
+var score = 0
+var score_display = preload("res://Objects/UI_elements/Score_display.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 func start_game() -> void:
 	create_pipe(0)
 	pipe_timer.start()
+	add_child(score_display.instance())
 
 func create_pipe(var game_difficulty) -> void:
 	var p = pipe.instance()
@@ -39,3 +42,7 @@ func stop_game() -> void:
 func _on_pipe_timer_timeout() -> void:
 	create_pipe(difficulty)
 	pipe_timer.start()
+
+func add_score() -> void:
+	score += 1
+	get_node("Score_display").get_node("CenterContainer/Label").text = str(score)
