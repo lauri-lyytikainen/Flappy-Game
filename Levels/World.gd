@@ -18,7 +18,7 @@ func _ready() -> void:
 	randomize()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if player_alive:
 		background.scroll_offset.x -= 1
 		floor_texture.scroll_offset.x -= 2

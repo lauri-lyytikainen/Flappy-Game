@@ -14,7 +14,7 @@ func _ready() -> void:
 	upper_pipe.position.y = -195-int(g)
 	lower_pipe.position.y = 195+int(g)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if difficulty == 0:
 		difficulty = 1
 		upper_pipe.position.y = -200
