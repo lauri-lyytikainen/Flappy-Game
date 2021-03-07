@@ -29,6 +29,8 @@ scale = Vector2( 2, 2 )
 texture = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+z_index = -1
+z_as_relative = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 135, 450 )
@@ -47,9 +49,11 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 292, 0, 168, 56 )
 
-[node name="Main_menu" parent="Floor/ParallaxBackground" instance=ExtResource( 3 )]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 z_index = 5
 shape = SubResource( 2 )
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="Main_menu" parent="ui_layer" instance=ExtResource( 3 )]
 [connection signal="timeout" from="pipe_timer" to="." method="_on_pipe_timer_timeout"]

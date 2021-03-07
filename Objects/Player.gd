@@ -3,7 +3,7 @@ extends KinematicBody2D
 var gravity = Vector2(0,0.5)
 var jump_strength = 6
 var velocity = Vector2.ZERO
-var max_speed = 3
+var max_speed = 6
 var alive = true
 onready var animation_player = get_node("AnimationPlayer")
 onready var menu_animation_player = get_node("AnimationPlayer2")
@@ -11,6 +11,7 @@ var menu_text = preload("res://Objects/UI_elements/Game_name_text.tscn")
 var menu_position = Vector2(240, 120)
 var starting_position = Vector2(135, 240)
 var menu_text_position = Vector2(-226, -24)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,7 +50,7 @@ func gameplay_physics() -> void:
 			die()
 	
 	#Sprite rotation
-	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 30) + 30
+	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 60) + 60
 	rotation_degrees = rotation
 
 func die() -> void:
