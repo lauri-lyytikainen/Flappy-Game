@@ -33,12 +33,14 @@ z_as_relative = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 135, 450 )
+z_index = 100
 collision_layer = 4
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Floor"]
 layer = 0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Floor/ParallaxBackground"]
+z_index = 100
 z_as_relative = false
 motion_mirroring = Vector2( 336, 0 )
 

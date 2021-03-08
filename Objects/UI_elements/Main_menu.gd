@@ -23,6 +23,7 @@ func _on_Timer_timeout() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if play_button_pressed and event.is_action("jump"):
+		timer.stop()
 		start_game()
 
 func start_game() -> void:
