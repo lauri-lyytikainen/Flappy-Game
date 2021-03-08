@@ -4,6 +4,7 @@ var difficulty = 1
 var active = true
 onready var upper_pipe = get_node("Upper Pipe")
 onready var lower_pipe = get_node("Lower Pipe")
+onready var audi_player = get_node("AudioStreamPlayer2D")
 var passed = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		position.y = 200
 	if active:
 		if position.x <= 135 and !passed:
+			audi_player.play()
 			passed = true
 			get_parent().add_score()
 		move_and_collide(Vector2(-difficulty-1,0))
