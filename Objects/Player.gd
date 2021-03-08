@@ -25,7 +25,7 @@ func move_to_starting_position() -> void:
 	menu_animation_player.play("move_from_menu_to_ready")
 	get_node("Game_title").fade()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if get_parent().game_started:
 		gameplay_physics()
 
@@ -46,8 +46,7 @@ func gameplay_physics() -> void:
 		
 	var collision = move_and_collide(velocity)
 	if collision and alive:
-		if "Pipe" in collision.collider.name or "Floor" in collision.collider.name:
-			die()
+		die()
 	
 	#Sprite rotation
 	var rotation = (velocity.y - max_speed) / (-jump_strength - max_speed) * (-30 - 60) + 60

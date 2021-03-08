@@ -29,7 +29,6 @@ scale = Vector2( 2, 2 )
 texture = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-z_index = -1
 z_as_relative = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -40,6 +39,7 @@ collision_layer = 4
 layer = 0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Floor/ParallaxBackground"]
+z_as_relative = false
 motion_mirroring = Vector2( 336, 0 )
 
 [node name="Mobile - Flappy Bird - Version 12 Sprites" type="Sprite" parent="Floor/ParallaxBackground/ParallaxLayer"]

@@ -17,9 +17,10 @@ _global_script_class_icons={
 
 config/name="Flappy Game"
 run/main_scene="res://Levels/World.tscn"
+boot_splash/image="res://splash1.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://icon.png"
-config/macos_native_icon="res://icon.png"
-config/windows_native_icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
