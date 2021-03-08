@@ -14,8 +14,13 @@ onready var ui_layer = get_node("ui_layer")
 var score_display = preload("res://Objects/UI_elements/Score_display.tscn")
 var game_over_screen = preload("res://Objects/UI_elements/Game_over_screen.tscn")
 
+var save = ConfigFile.new()
+var err = save.load("res://Data/Save.ini")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if err == OK: #Load Settings
+		best_score = save.get_value("Score", "best_score", false)
 	randomize()
 
 
@@ -39,7 +44,13 @@ func create_pipe(var game_difficulty) -> void:
 func stop_game() -> void:
 	var s =game_over_screen.instance()
 	ui_layer.add_child(s)
+	#Score
 	s.set_score(score)
+	if score > best_score:
+		best_score = score
+		save.set_value("Score", "best_score", best_score) 
+		save.save("res://Data/Save.ini")
+	s.set_best_score(best_score)
 	pipe_timer.stop()
 	for p in pipes:
 		if p != null:

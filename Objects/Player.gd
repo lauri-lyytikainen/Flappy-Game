@@ -12,6 +12,11 @@ var menu_position = Vector2(240, 120)
 var starting_position = Vector2(135, 240)
 var menu_text_position = Vector2(-226, -24)
 
+onready var audio_player = get_node("AudioStreamPlayer2D")
+var sfx_wing = preload("res://Sounds/sfx_wing.wav")
+var sfx_hit = preload("res://Sounds/sfx_hit.wav")
+var sfx_die = preload("res://Sounds/sfx_die.wav")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,6 +39,8 @@ func gameplay_physics() -> void:
 	
 	if Input.is_action_just_pressed("jump") and alive:
 		velocity.y = -jump_strength
+		audio_player.stream = sfx_wing
+		audio_player.play()
 	if velocity.y > max_speed:
 		velocity.y = max_speed
 		
@@ -46,6 +53,8 @@ func gameplay_physics() -> void:
 		
 	var collision = move_and_collide(velocity)
 	if collision and alive:
+		audio_player.stream = sfx_hit
+		audio_player.play(0.1)
 		die()
 	
 	#Sprite rotation
@@ -59,3 +68,9 @@ func die() -> void:
 			alive = false
 			get_parent().player_alive = false
 			animation_player.play("dead")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if "dead" in anim_name:
+		audio_player.stream = sfx_die
+		audio_player.play()
