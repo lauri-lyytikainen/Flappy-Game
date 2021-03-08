@@ -9,6 +9,7 @@ onready var floor_texture = get_node("Floor/ParallaxBackground")
 var player_alive = true
 var game_started = false
 var score = 0
+var best_score = 0
 onready var ui_layer = get_node("ui_layer")
 var score_display = preload("res://Objects/UI_elements/Score_display.tscn")
 var game_over_screen = preload("res://Objects/UI_elements/Game_over_screen.tscn")
@@ -36,7 +37,9 @@ func create_pipe(var game_difficulty) -> void:
 	add_child(p)
 
 func stop_game() -> void:
-	ui_layer.add_child(game_over_screen.instance())
+	var s =game_over_screen.instance()
+	ui_layer.add_child(s)
+	s.set_score(score)
 	pipe_timer.stop()
 	for p in pipes:
 		if p != null:
