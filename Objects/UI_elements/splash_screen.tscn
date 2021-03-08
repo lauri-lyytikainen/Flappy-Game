@@ -10,7 +10,7 @@
 [ext_resource path="res://Textures/splash_baguette_frames/frame4.png" type="Texture" id=8]
 [ext_resource path="res://Fonts/FlappyBirdRegular-9Pq0.ttf" type="DynamicFontData" id=9]
 
-[sub_resource type="AnimatedTexture" id=3]
+[sub_resource type="AnimatedTexture" id=1]
 frames = 7
 pause = true
 oneshot = true
@@ -30,15 +30,14 @@ frame_5/delay_sec = 0.0
 frame_6/texture = ExtResource( 3 )
 frame_6/delay_sec = 0.0
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_char = 1
 font_data = ExtResource( 9 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/CenterContainer:modulate")
 tracks/0/interp = 1
@@ -52,7 +51,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "hide_logo"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/CenterContainer:modulate")
@@ -67,8 +66,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "show_logo"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/CenterContainer:modulate")
 tracks/0/interp = 1
@@ -90,6 +88,7 @@ script = ExtResource( 2 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 270, 480 )
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -114,7 +113,7 @@ alignment = 1
 margin_right = 198.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-texture = SubResource( 3 )
+texture = SubResource( 1 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -125,7 +124,7 @@ __meta__ = {
 margin_top = 132.0
 margin_right = 198.0
 margin_bottom = 157.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "ExtraLongBaguette"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,7 +132,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "show_logo"
-anims/default = SubResource( 1 )
-anims/hide_logo = SubResource( 5 )
-anims/show_logo = SubResource( 4 )
+anims/default = SubResource( 3 )
+anims/hide_logo = SubResource( 4 )
+anims/show_logo = SubResource( 5 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

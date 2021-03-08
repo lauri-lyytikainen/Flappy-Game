@@ -3,8 +3,6 @@ var next_scene = preload("res://Levels/World.tscn")
 onready var animation_player = get_node("AnimationPlayer")
 onready var logo = get_node("ColorRect/CenterContainer/VBoxContainer/TextureRect")
 
-func _ready() -> void:
-	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if "show_logo" in anim_name:

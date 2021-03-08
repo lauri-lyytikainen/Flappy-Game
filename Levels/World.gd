@@ -2,8 +2,8 @@ extends Node2D
 
 onready var pipe_timer = get_node("pipe_timer")
 var pipe = preload("res://Objects/Pipe.tscn")
-var pipes = []
-var difficulty = 1
+var pipes = [] #Holds all the pipes
+var difficulty = 1 #Difficulty wich is not yet implemented
 onready var background = get_node("ParallaxBackground")
 onready var floor_texture = get_node("Floor/ParallaxBackground")
 var player_alive = true
@@ -19,7 +19,7 @@ var err = save.load("res://Data/Save.ini")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if err == OK: #Load Settings
+	if err == OK: #Load Best score
 		best_score = save.get_value("Score", "best_score", false)
 	randomize()
 
@@ -27,32 +27,33 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if player_alive:
 		background.scroll_offset.x -= 1
-		floor_texture.scroll_offset.x -= 2
+		floor_texture.scroll_offset.x -= 2 
+		#Moves the background and the floor
 		
 func start_game() -> void:
-	create_pipe(0)
+	create_pipe(0) #Creates the first pipe
 	pipe_timer.start()
 	ui_layer.add_child(score_display.instance())
 
 func create_pipe(var game_difficulty) -> void:
 	var p = pipe.instance()
 	pipes.append(p)
-	p.position = Vector2(300,200)
+	p.position = Vector2(300,200) #Default pipe position
 	p.difficulty = game_difficulty
 	add_child(p)
 
 func stop_game() -> void:
-	var s =game_over_screen.instance()
+	var s = game_over_screen.instance()
 	ui_layer.add_child(s)
 	#Score
 	s.set_score(score)
 	if score > best_score:
 		best_score = score
 		save.set_value("Score", "best_score", best_score) 
-		save.save("res://Data/Save.ini")
+		save.save("res://Data/Save.ini") #Saves the best score
 	s.set_best_score(best_score)
-	pipe_timer.stop()
-	for p in pipes:
+	pipe_timer.stop() #Stops spawning new pipes
+	for p in pipes: #Stops the pipes
 		if p != null:
 			p.active = false
 

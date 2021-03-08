@@ -3,8 +3,8 @@ extends KinematicBody2D
 var gravity = Vector2(0,0.5)
 var jump_strength = 6
 var velocity = Vector2.ZERO
-var max_speed = 6
-var alive = true
+var max_speed = 6 #Max speed downwards
+var alive = true 
 onready var animation_player = get_node("AnimationPlayer")
 onready var menu_animation_player = get_node("AnimationPlayer2")
 var menu_text = preload("res://Objects/UI_elements/Game_name_text.tscn")
@@ -20,11 +20,11 @@ var sfx_die = preload("res://Sounds/sfx_die.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	collision_mask = 0b00000000000000001110
+	collision_mask = 0b00000000000000001110 #Collision layers
 	position = menu_position
 	var t = menu_text.instance()
 	t.position = menu_text_position
-	add_child(t)
+	add_child(t) #Adds the game title as a child
 
 func move_to_starting_position() -> void:
 	menu_animation_player.play("move_from_menu_to_ready")
@@ -34,18 +34,17 @@ func _physics_process(delta: float) -> void:
 	if get_parent().game_started:
 		gameplay_physics()
 
-func gameplay_physics() -> void:
+func gameplay_physics() -> void: #Handles player movement
 	velocity += gravity
 	
 	if Input.is_action_just_pressed("jump") and alive:
 		velocity.y = -jump_strength
 		audio_player.stream = sfx_wing
 		audio_player.play()
-	if velocity.y > max_speed:
+	if velocity.y > max_speed: #Cap vertical speed
 		velocity.y = max_speed
-		
-		
-	if velocity.x > 0:
+
+	if velocity.x > 0: #After death speed effect
 		velocity.x -= 0.1
 	if velocity.x < 0:
 		velocity.x = 0
